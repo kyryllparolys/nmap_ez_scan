@@ -8,7 +8,7 @@ class term_colors:
 
 class input_values:
     input_custom_ip = str(input(term_colors.YELLOW + "Enter ip that you want to scan : " + term_colors.NC))
-
+    input_custom_file = str(input(term_colors.YELLOW + "Enter the name of the file(without .xml ) : " + term_colors.NC)) #scan will be stored in .xml file
 
 print(term_colors.YELLOW + "Type of scan \n \n " + term_colors.NC)
 
@@ -20,7 +20,7 @@ print(term_colors.GREEN + "[" + term_colors.NC + term_colors.RED + "0" + term_co
 input_answer_first_first = int(input(term_colors.YELLOW + "Enter your choice: " + term_colors.NC))
 
 if input_answer_first_first == 1:
-    print(os.system("sudo nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 " + input_values.input_custom_ip))
+    print(os.system("sudo nmap -oX " + input_values.input_custom_file +  ".xml -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 " + input_values.input_custom_ip))
 elif input_answer_first_first == 2:
     print(term_colors.GREEN + "[" + term_colors.NC + term_colors.RED + "1" + term_colors.NC + term_colors.GREEN + "]" + term_colors.NC + term_colors.YELLOW + "Intense" + term_colors.NC)  # Intense
     print(term_colors.GREEN + "[" + term_colors.NC + term_colors.RED + "2" + term_colors.NC + term_colors.GREEN + "2" + term_colors.NC + term_colors.YELLOW + "Intense+UDP" + term_colors.NC)  # Intense+UDP
@@ -30,11 +30,11 @@ elif input_answer_first_first == 2:
     input_answer_first_second = int(input(term_colors.YELLOW + "Enter your choice: " + term_colors.NC))
 
     if input_answer_first_second == 1:
-            print(os.system("nmap -T4 -A -v " + input_values.input_custom_ip))
+            print(os.system("nmap -oX " + input_values.input_custom_file +  ".xml -T4 -A -v " + input_values.input_custom_ip))
     elif input_answer_first_second == 2:
-            print(os.system("nmap -sS -sU -T4 -A -v " + input_values.input_custom_ip))
+            print(os.system("nmap -oX " + input_values.input_custom_file +  ".xml -sS -sU -T4 -A -v " + input_values.input_custom_ip))
     elif input_answer_first_second == 3:
-            print(os.system("nmap -p 1-65535 -T4 -A -v " + input_values.input_custom_ip))
+            print(os.system("nmap -oX " + input_values.input_custom_file +  ".xml -p 1-65535 -T4 -A -v " + input_values.input_custom_ip))
     elif input_answer_first_second == 0:
             exit()
     else:
@@ -47,9 +47,9 @@ elif input_answer_first_first == 3:
     input_answer_first_third = int(input(term_colors.YELLOW + "Enter your choice: " + term_colors.NC))
 
     if input_answer_first_third == 1:
-        print(os.system("nmap --max-rate 100 " + input_values.input_custom_ip))
+        print(os.system("nmap -oX " + input_values.input_custom_file +  ".xml --max-rate 100 " + input_values.input_custom_ip))
     elif input_answer_first_third == 2:
-        print(os.system('nmap -p 62078 ' + input_values.input_custom_ip + ' | grep "62078/tcp open"'))
+        print(os.system('nmap -oX " + input_values.input_custom_file +  ".xml -p 62078 ' + input_values.input_custom_ip + ' | grep "62078/tcp open"'))
     elif input_answer_first_third == 3:
         exit()
     else:
